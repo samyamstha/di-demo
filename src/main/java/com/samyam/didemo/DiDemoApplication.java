@@ -18,8 +18,8 @@ public class DiDemoApplication {
 
 
 		MyController controller = (MyController) ctx.getBean("myController"); //springboot defines the beans in camelcase.
-		System.out.println(controller.Hello());
 
+		System.out.println(controller.Hello());
 		System.out.println(ctx.getBean(PropertyInjectedController.class).sayHello());
 		System.out.println(ctx.getBean(ConstructorInjectedController.class).sayHello());
 		System.out.println(ctx.getBean(SetterInjectedController.class).sayHello());
