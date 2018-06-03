@@ -1,7 +1,6 @@
 package com.samyam.didemo.controllers;
 
 import com.samyam.didemo.services.GreetingService;
-import com.samyam.didemo.services.GreetingServiceImpl;
 
 public class SetterInjectedController {
 
