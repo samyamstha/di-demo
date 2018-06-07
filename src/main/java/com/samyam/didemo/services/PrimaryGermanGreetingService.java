@@ -1,16 +1,16 @@
 package com.samyam.didemo.services;
 
 
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Service;
+public class PrimaryGermanGreetingService implements GreetingService {
 
-@Service
-@Profile("de")
-@Primary
-public class PrimaryGermanGreetingService implements GreetingService{
+    private GreetingRepository greetingRepository;
+
+    public PrimaryGermanGreetingService(GreetingRepository greetingRepository) {
+        this.greetingRepository = greetingRepository;
+    }
+
     @Override
     public String sayGreeting() {
-        return "Hallo! Dies ist von der Implementierung des primären deutschen Begrüßungsdienstes.";
+        return greetingRepository.getGermanGreeting();
     }
 }

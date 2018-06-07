@@ -10,7 +10,6 @@ public class ConstructorInjectedController {
 
     private GreetingService greetingService;
 
-    @Autowired
     public ConstructorInjectedController(@Qualifier("constructorGreetingService") GreetingService greetingService) {
         this.greetingService = greetingService;
     }
