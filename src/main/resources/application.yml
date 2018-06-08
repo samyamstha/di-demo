@@ -3,3 +3,11 @@ com:
     username: JMS Username
     password: pass
     dburl: SomeURL
+
+---  #three dash separates the file in YAML
+
+spring:
+  profiles: de
+com:
+  jms:
+    username: JMS Username *** in *** German
