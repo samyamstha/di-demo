@@ -1,15 +1,18 @@
 package com.samyam.didemo.config;
 
 import com.samyam.didemo.examplebeans.FakeDataSource;
+import com.samyam.didemo.examplebeans.FakeJmsBroker;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 
 @Configuration
-@PropertySource("classpath:datasource.properties")
+
+
 public class PropertyConfig {
 
     @Value("${com.username}")
@@ -21,6 +24,16 @@ public class PropertyConfig {
     @Value("${com.dburl}")
     String url;
 
+
+    @Value("${com.jms.username}")
+    String jmsUsername;
+
+    @Value("${com.jms.password}")
+    String jmsPassword;
+
+    @Value("${com.jms.dburl}")
+    String jmsUrl;
+
     @Bean
     public FakeDataSource fakeDataSource(){
         FakeDataSource fakeDataSource = new FakeDataSource();
@@ -31,8 +44,13 @@ public class PropertyConfig {
     }
 
     @Bean
-    public static PropertySourcesPlaceholderConfigurer properties(){
-        PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer =new PropertySourcesPlaceholderConfigurer();
-        return  propertySourcesPlaceholderConfigurer;
+    public FakeJmsBroker fakeJmsBroker(){
+        FakeJmsBroker fakeJmsBroker = new FakeJmsBroker();
+        fakeJmsBroker.setUser(jmsUsername);
+        fakeJmsBroker.setPassword(jmsPassword);
+        fakeJmsBroker.setUrl(jmsUrl);
+        return  fakeJmsBroker;
     }
+
+
 }
